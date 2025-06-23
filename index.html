@@ -1,13 +1,59 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Welcome - Join Us!</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Use Inter as the default font */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Simple transition for interactive elements */
+        .cta-button {
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
 </head>
-<body>
-    <h1> hellow mambo zenu</h1>
+<body class="bg-gray-100 dark:bg-gray-900">
+
+    <div class="flex flex-col items-center justify-center min-h-screen p-6 text-center">
+        <!-- Main Content Container -->
+        <div class="max-w-2xl w-full">
+            <!-- Main Heading -->
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight">
+                Welcome to Our Community
+            </h1>
+            
+            <!-- Subheading -->
+            <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                Discover a new way to connect, share, and grow. Creating an account is the first step towards an amazing journey.
+            </p>
+
+            <!-- Call to Action Buttons -->
+            <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+                <!-- Register Button (links to your register form) -->
+                <a href="#" class="cta-button w-full sm:w-auto inline-block px-8 py-4 text-lg font-semibold text-white bg-indigo-600 rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transform hover:scale-105">
+                    Create Your Account
+                </a>
+                <!-- Sign In Link -->
+                <a href="#" class="cta-button w-full sm:w-auto inline-block px-8 py-4 text-lg font-semibold text-gray-700 bg-gray-200 dark:bg-gray-700 dark:text-gray-200 rounded-lg shadow-md hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400 transform hover:scale-105">
+                    Sign In
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="absolute bottom-6 text-gray-500 dark:text-gray-400 text-sm">
+            &copy; 2024 Your Company. All rights reserved.
+        </footer>
+    </div>
+
 </body>
 </html>
-
