@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Account</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Use Inter as the default font */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Simple transition for interactive elements */
+        .form-input, .form-button {
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 flex items-center justify-center min-h-screen">
+
+    <div class="w-full max-w-md p-8 space-y-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
+        <!-- Form Header -->
+        <div class="text-center">
+            <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Create an Account</h1>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Join our community to get started.</p>
+        </div>
+
+        <!-- Registration Form -->
+        <form id="registrationForm" class="mt-8 space-y-6" action="#" method="POST">
+            <div class="space-y-4 rounded-md shadow-sm">
+                <!-- Full Name Input -->
+                <div>
+                    <label for="full-name" class="sr-only">Full Name</label>
+                    <input id="full-name" name="name" type="text" required class="form-input appearance-none relative block w-full px-3 py-3 border border-gray-300 dark:border-gray-600 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Full Name">
+                </div>
+                <!-- Email Address Input -->
+                <div>
+                    <label for="email-address" class="sr-only">Email address</label>
+                    <input id="email-address" name="email" type="email" autocomplete="email" required class="form-input appearance-none relative block w-full px-3 py-3 border border-gray-300 dark:border-gray-600 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address">
+                </div>
+                <!-- Password Input -->
+                <div>
+                    <label for="password" class="sr-only">Password</label>
+                    <input id="password" name="password" type="password" autocomplete="new-password" required class="form-input appearance-none relative block w-full px-3 py-3 border border-gray-300 dark:border-gray-600 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password">
+                </div>
+                <!-- Confirm Password Input -->
+                <div>
+                    <label for="confirm-password" class="sr-only">Confirm Password</label>
+                    <input id="confirm-password" name="confirm-password" type="password" autocomplete="new-password" required class="form-input appearance-none relative block w-full px-3 py-3 border border-gray-300 dark:border-gray-600 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-700 rounded-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Confirm Password">
+                </div>
+            </div>
+
+            <!-- Password Match Error Message Box -->
+            <div id="password-error" class="hidden text-sm text-red-600 dark:text-red-400 p-3 bg-red-100 dark:bg-red-900/20 rounded-lg">
+                Passwords do not match.
+            </div>
+
+             <!-- Terms of Service Checkbox -->
+            <div class="flex items-center">
+                <input id="terms" name="terms" type="checkbox" required class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                <label for="terms" class="ml-2 block text-sm text-gray-900 dark:text-gray-300">
+                    I agree to the <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Terms of Service</a>
+                </label>
+            </div>
+
+            <!-- Submit Button -->
+            <div>
+                <button type="submit" class="form-button group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Register
+                </button>
+            </div>
+        </form>
+
+         <!-- Footer Link -->
+        <p class="text-center text-sm text-gray-600 dark:text-gray-400">
+            Already have an account?
+            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
+                Sign in
+            </a>
+        </p>
+    </div>
+
+    <script>
+        // Get form elements
+        const registrationForm = document.getElementById('registrationForm');
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirm-password');
+        const passwordError = document.getElementById('password-error');
+
+        // Function to check if passwords match
+        const validatePasswords = () => {
+            if (password.value !== confirmPassword.value) {
+                // Show error message
+                passwordError.classList.remove('hidden');
+                // Add red border to indicate error
+                confirmPassword.classList.add('border-red-500');
+                return false; // Passwords don't match
+            } else {
+                // Hide error message
+                passwordError.classList.add('hidden');
+                // Remove red border
+                confirmPassword.classList.remove('border-red-500');
+                return true; // Passwords match
+            }
+        };
+
+        // Add event listeners to check passwords as the user types
+        password.addEventListener('input', validatePasswords);
+        confirmPassword.addEventListener('input', validatePasswords);
+
+        // Listen for form submission
+        registrationForm.addEventListener('submit', function(event) {
+            // Prevent form from submitting if passwords don't match
+            if (!validatePasswords()) {
+                event.preventDefault(); // Stop the form submission
+                console.error('Form submission blocked: Passwords do not match.');
+            } else {
+                console.log('Form submitted successfully!');
+                // Here you would typically send the data to a server.
+                // For this example, we'll just log it.
+                event.preventDefault(); // Prevent actual submission for this demo
+            }
+        });
+    </script>
+
+</body>
+</html>
